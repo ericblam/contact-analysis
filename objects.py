@@ -1,4 +1,3 @@
-import re
 from pprint import pprint
 
 class Node(object):
@@ -24,27 +23,19 @@ class Dictionary(object):
             curr = curr.children[letter]
         curr.end_word = True
 
-    def print_dict(self):
+    def dict_to_list(self):
         temp_list = []
-        self.R_print_dict(temp_list, self.root, '')
+        self.dict_to_list_R(temp_list, self.root, '')
         temp_list.sort()
-        pprint(temp_list)
+        return temp_list
 
-    def R_print_dict(self, dict_list, node, word):
+    def dict_to_list_R(self, dict_list, node, word):
         if node is None:
             return
         if node.end_word:
             dict_list.append(word)
         for next_letter in xrange(ord('a'), ord('z') + 1):
-            self.R_print_dict(dict_list,
-                              node.children[chr(next_letter)],
-                              word + chr(next_letter))
+            self.dict_to_list_R(dict_list,
+                                node.children[chr(next_letter)],
+                                word + chr(next_letter))
 
-dic = Dictionary()
-dic.add_word('word')
-dic.add_word('world')
-dic.add_word('hello')
-dic.add_word('ant')
-dic.add_word('antelope')
-#pprint(dic.root.children)
-dic.print_dict()
