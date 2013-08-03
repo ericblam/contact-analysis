@@ -3,3 +3,5 @@ CONTACT-ANALYSIS
 contact-analysis is meant to aid the efforts of the word-game players and those who wish to frustrate their friends with their vast "cleverness."
 
 contact-analysis will analyse a given dictionary and figure which word, or words, would be best to use in a game of contact
+
+To use, see help (python contact-analysis help)
