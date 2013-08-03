@@ -19,6 +19,7 @@ class Node(object):
 
     def update_word_count(self):
         if self.end_word and self.no_words_after():
+            self.words_after = 1
             return 1
         
         n = 0
