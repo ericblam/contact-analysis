@@ -9,6 +9,16 @@ class Node(object):
         self.score = 0
         self.children = {chr(letter): None for letter in xrange(ord('a'), ord('z') + 1)}
 
+    def update_word_count(self):
+        for letter in xrange(ord('a'), ord('z') +1):
+            next_node = self.children[chr(letter)]
+            if next_node is not None:
+                self.words_after += next_node.update_word_count()
+        if self.end_word:
+            return 1 + self.words_after
+        else:
+            return self.words_after
+
 class Dictionary(object):
 
     # Initializes empty tree
@@ -39,3 +49,11 @@ class Dictionary(object):
                                 node.children[chr(next_letter)],
                                 word + chr(next_letter))
 
+    def print_dict(self):
+        pprint(self.dict_to_list())
+
+    def update_word_count(self):
+        self.root.update_word_count()
+
+    def size(self):
+        return self.root.words_after
