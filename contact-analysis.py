@@ -26,7 +26,7 @@ def main():
         dic = file_to_dict(arg1)
         if arg2 == 'print':
             dic.print_dict()
-        elif arg2 == 'scores':
+        elif arg2 == 'score':
             pprint(score(dic))
         elif arg2 == 'highest':
             word = highest_score(dic)
